@@ -14,6 +14,8 @@
 		9208153829429C0A0032F4E8 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 9208153729429C0A0032F4E8 /* LICENSE */; };
 		9208153A29429C2C0032F4E8 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 9208153929429C2C0032F4E8 /* .gitignore */; };
 		9208153C29429C560032F4E8 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 9208153B29429C560032F4E8 /* README.md */; };
+		9208153E2943D3060032F4E8 /* BetterRest.csv in Resources */ = {isa = PBXBuildFile; fileRef = 9208153D2943D3060032F4E8 /* BetterRest.csv */; };
+		92081542294411290032F4E8 /* SleepCalculator.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 92081541294411290032F4E8 /* SleepCalculator.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +27,8 @@
 		9208153729429C0A0032F4E8 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		9208153929429C2C0032F4E8 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		9208153B29429C560032F4E8 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		9208153D2943D3060032F4E8 /* BetterRest.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BetterRest.csv; sourceTree = "<group>"; };
+		92081541294411290032F4E8 /* SleepCalculator.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = SleepCalculator.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,9 +45,11 @@
 		9208151D29429BCC0032F4E8 = {
 			isa = PBXGroup;
 			children = (
+				92081541294411290032F4E8 /* SleepCalculator.mlmodel */,
 				9208153B29429C560032F4E8 /* README.md */,
 				9208153929429C2C0032F4E8 /* .gitignore */,
 				9208153729429C0A0032F4E8 /* LICENSE */,
+				9208153D2943D3060032F4E8 /* BetterRest.csv */,
 				9208152829429BCC0032F4E8 /* BetterRest */,
 				9208152729429BCC0032F4E8 /* Products */,
 			);
@@ -138,6 +144,7 @@
 				9208153829429C0A0032F4E8 /* LICENSE in Resources */,
 				9208153C29429C560032F4E8 /* README.md in Resources */,
 				9208153129429BCF0032F4E8 /* Preview Assets.xcassets in Resources */,
+				9208153E2943D3060032F4E8 /* BetterRest.csv in Resources */,
 				9208152E29429BCF0032F4E8 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -151,6 +158,7 @@
 			files = (
 				9208152C29429BCC0032F4E8 /* ContentView.swift in Sources */,
 				9208152A29429BCC0032F4E8 /* BetterRestApp.swift in Sources */,
+				92081542294411290032F4E8 /* SleepCalculator.mlmodel in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
