@@ -16,6 +16,19 @@ import CoreML
 //components.minute = 0
 //let date = Calendar.current.date(from: components)
 
+/// https://www.hackingwithswift.com/quick-start/swiftui/how-to-run-some-code-when-state-changes-using-onchange
+extension Binding {
+    func onChange(_ handler: @escaping (Value) -> Void) -> Binding<Value> {
+        Binding(
+            get: { self.wrappedValue },
+            set: { newValue in
+                self.wrappedValue = newValue
+                handler(newValue)
+            }
+        )
+    }
+}
+
 struct ContentView: View {
     @State private var sleepAmount = 8.0
     @State private var wakeUp = defaultWakeTime
@@ -33,36 +46,33 @@ struct ContentView: View {
     }
     
     var body: some View {
-        NavigationView {
+        VStack {
             Form {
                 Section("When do you want to wake up?") {
-                    DatePicker("Please enter a time", selection: $wakeUp, displayedComponents: .hourAndMinute)
+                    DatePicker("Please enter a time", selection: $wakeUp.onChange({newValue in calculateBedtime()}), displayedComponents: .hourAndMinute)
                         
                 }
                 
                 Section("Desired amount of sleep") {
-                    Stepper("\(sleepAmount.formatted()) hours", value: $sleepAmount, in: 4...12, step: 0.25)
+                    Stepper("\(sleepAmount.formatted()) hours", value: $sleepAmount.onChange({newValue in calculateBedtime()}), in: 4...12, step: 0.25)
                 }
                 
                 Section("Daily coffee intake") {
-                    Picker("Cups of coffee", selection: $coffeeAmount) {
+                    Picker("Cups of coffee", selection: $coffeeAmount.onChange({newValue in calculateBedtime()})) {
                         Text("1 cup")
                         ForEach(2 ..< 20) {
                             Text("\($0) cups")
                         }
                     }
                 }
+            }
+            
+            VStack {
+                Text("\(alertTitle.uppercased())")
+                Text("\(alertMessage)")
+                    .font(.system(size: 50))
+            }
                 
-            }
-            .navigationTitle("BetterRest")
-            .toolbar {
-                Button("Calculate", action: calculateBedtime)
-            }
-            .alert(alertTitle, isPresented: $showingAlert) {
-                Button("OK") {}
-            } message: {
-                Text(alertMessage)
-            }
         }
     }
     
@@ -83,7 +93,7 @@ struct ContentView: View {
             
             // Convert predicted sleep time back to Date
             let sleepTime = wakeUp - prediction.actualSleep
-            alertTitle = "Your ideal bedtime is..."
+            alertTitle = "Your ideal bedtime is "
             alertMessage = sleepTime.formatted(date: .omitted, time: .shortened)
         } catch {
             alertTitle = "Error"
